@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: #F6F1E5;
+    --paper2: #EFE7D5;
+    --card: #FFFCF4;
+    --ink: #1B2A21;
+    --ink-soft: #54635A;
+    --green: #1F4D38;
+    --green-deep: #122B20;
+    --red: #C03D2B;
+    --maroon: #4A130D;
+    --coral: #E8755C;
+    --gold: #C99A3C;
+    --line: rgba(27,42,33,.15);
+    --line-strong: rgba(27,42,33,.32);
+    --shadow: 0 18px 44px -22px rgba(18,43,32,.35);
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: var(--red);
+    color: white;
+  }
+}
