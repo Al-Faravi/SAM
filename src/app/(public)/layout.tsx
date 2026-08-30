@@ -1,3 +1,7 @@
+import Navbar from '@/components/shared/header/Navbar';
+import NoticeBar from '@/components/features/home/NoticeBar';
+import Footer from '@/components/shared/footer/Footer'; // <-- ইম্পোর্ট করো
+
 export default function PublicLayout({
   children,
 }: {
@@ -5,13 +9,14 @@ export default function PublicLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* TODO: Navbar will be added here */}
+      <Navbar />
+      <NoticeBar />
       
       <main className="flex-grow">
         {children}
       </main>
 
-      {/* TODO: Footer will be added here */}
+      <Footer /> {/* <-- এখানে যোগ করো */}
     </div>
   );
 }
