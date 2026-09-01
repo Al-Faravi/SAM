@@ -6,7 +6,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 
-// ⭐️ Standard Serial with Contact Link to Home Section
 export const navLinks = [
   { name: "হোম", href: "/" },
   { name: "আমাদের সম্পর্কে", href: "/about" },
@@ -14,7 +13,7 @@ export const navLinks = [
   { name: "কার্যক্রম", href: "/events" },
   { name: "স্টুডেন্ট কর্নার", href: "/student-corner" },
   { name: "আর্কাইভ ও গ্যালারি", href: "/archive" },
-  { name: "যোগাযোগ", href: "/#contact" }, // হোম পেজের কন্টাক্ট সেকশনের জন্য
+  { name: "যোগাযোগ", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -26,6 +25,10 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
+    
+    // ⭐️ পেজ রিলোড হলেই সাথে সাথে একবার চেক করে নেবে স্ক্রোল পজিশন
+    handleScroll(); 
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -61,7 +64,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation (Hidden on mobile/tablet, visible on min-[1120px] screens) */}
+        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-5 min-[1120px]:flex">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -74,7 +77,6 @@ export default function Navbar() {
                 }`}
               >
                 {link.name}
-                {/* Active / Hover Underline Animation */}
                 <span 
                   className={`absolute bottom-0 left-0 h-[2px] w-full origin-left bg-red transition-transform duration-300 ease-out ${
                     isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
@@ -90,8 +92,6 @@ export default function Navbar() {
           <Link href="/#contact" className="hidden rounded-full bg-green px-6 py-2 font-body text-[14px] font-bold text-white transition-all hover:bg-greendeep hover:shadow-lg min-[1120px]:flex">
             যোগ দিন
           </Link>
-          
-          {/* Renders hamburger and drawer on <= 1120px */}
           <MobileMenu />
         </div>
         

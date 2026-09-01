@@ -20,8 +20,12 @@ const hind = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: 'Student Association of Malipathor (SAM)',
+  title: 'The Student Association of Malipathor', // ট্যাবের নাম শুধু SAM দেখাবে
   description: 'Empowering Students. Serving Our Community. Building Our Future.',
+  icons: {
+    icon: '/sam favicon.jpg', // ট্যাবে লোগো দেখাবে
+    apple: '/sam favicon.jpg', // অ্যাপল ডিভাইসের জন্য
+  },
 };
 
 export default function RootLayout({
