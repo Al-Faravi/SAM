@@ -35,7 +35,7 @@ export default function MembersDirectory() {
   });
 
   return (
-    <section className="bg-paper py-16 lg:py-24">
+    <section className="bg-paper2 py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1180px] px-4 md:px-8">
         <div className="mb-8 border-b border-line pb-6">
           <h2 className="mb-6 font-display text-2xl font-bold text-ink lg:text-3xl">

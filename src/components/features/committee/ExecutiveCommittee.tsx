@@ -33,7 +33,7 @@ const committeeData = {
         name: "Md. Shakawat Hossain Faravi",
         role: "Technology & Innovation Secretary",
         inst: "CSE - AI & ML (GUB)",
-        img: "/profile.jpg",
+        img: "/profile.jpg", // বা তোমার দেওয়া /faravi(me).png
       },
     ],
     others: [
@@ -75,7 +75,7 @@ export default function ExecutiveCommittee() {
   const [leftOthers, rightOthers] = splitInHalf(currentData.others);
 
   return (
-    <section className="bg-paper2 py-16 lg:py-24">
+    <section className="bg-paper py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1180px] px-4 md:px-8">
         {/* Header & Year Selector */}
         <div className="mb-12 flex flex-col items-center gap-6 text-center">
@@ -122,7 +122,9 @@ export default function ExecutiveCommittee() {
               মূল দায়িত্বপ্রাপ্ত ({activeYear})
             </h3>
           </div>
-          <div className="mb-14 grid grid-cols-1 gap-5 min-[460px]:grid-cols-2 lg:grid-cols-4">
+          
+          {/* ⭐️ Mobile: 2-col, Tablet/Desktop: 4-col */}
+          <div className="mb-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {currentData.main.map((member) => (
               <div
                 key={member.id}
@@ -133,18 +135,20 @@ export default function ExecutiveCommittee() {
                     src={member.img}
                     alt={member.name}
                     fill
-                    sizes="(max-width: 460px) 100vw, (max-width: 900px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, 25vw"
                     className="object-cover"
                   />
                 </div>
-                <div className="border-t border-line px-4 py-3.5">
-                  <p className="mb-1 font-body text-[0.7rem] font-bold uppercase tracking-wider text-red">
+                
+                {/* ⭐️ Adjusted padding and font sizes for smaller mobile screens */}
+                <div className="border-t border-line px-2.5 py-3 sm:px-4 sm:py-3.5">
+                  <p className="mb-1 font-body text-[0.6rem] font-bold uppercase tracking-wider text-red sm:text-[0.7rem]">
                     {member.role}
                   </p>
-                  <h3 className="font-heading text-[1rem] font-bold leading-tight text-ink">
+                  <h3 className="font-heading text-[0.85rem] font-bold leading-tight text-ink sm:text-[1rem]">
                     {member.name}
                   </h3>
-                  <p className="mt-0.5 font-body text-[0.8rem] text-inksoft">
+                  <p className="mt-0.5 font-body text-[0.65rem] text-inksoft sm:text-[0.8rem]">
                     {member.inst}
                   </p>
                 </div>

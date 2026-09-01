@@ -46,6 +46,17 @@ export default function GallerySection() {
     setCurrentPage(1);
   }, [activeCat]);
 
+  // ⭐️ নতুন পেজ চেঞ্জ হ্যান্ডলার: পেজ চেঞ্জ হওয়ার সাথে সাথে স্ক্রোল করে উপরে নিয়ে যাবে
+  const handlePageChange = (pageNum: number) => {
+    setCurrentPage(pageNum);
+    setTimeout(() => {
+      const section = document.getElementById("gallery-section");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 50);
+  };
+
   // Lightbox Navigation Methods
   const openLightbox = (absoluteIndex: number) => {
     setCurrentIndex(absoluteIndex);
@@ -82,7 +93,8 @@ export default function GallerySection() {
   }, [isOpen, closeLightbox, nextImg, prevImg]);
 
   return (
-    <section className="bg-paper2 py-16 lg:py-24">
+    // ⭐️ id="gallery-section" এবং scroll-mt-24 যোগ করা হয়েছে
+    <section id="gallery-section" className="bg-paper2 py-16 scroll-mt-24 lg:py-24">
       <div className="mx-auto w-full max-w-[1180px] px-4 md:px-8">
         
         {/* Header & Filter Chips */}
@@ -149,7 +161,7 @@ export default function GallerySection() {
           <div className="mt-12 flex items-center justify-center gap-2">
             {/* Prev Button */}
             <button 
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-transparent text-ink transition-colors hover:bg-card disabled:opacity-40 disabled:hover:bg-transparent"
             >
@@ -163,7 +175,7 @@ export default function GallerySection() {
                 return (
                   <button
                     key={pageNum}
-                    onClick={() => setCurrentPage(pageNum)}
+                    onClick={() => handlePageChange(pageNum)}
                     className={`flex h-10 w-10 items-center justify-center rounded-full font-heading text-[15px] font-bold transition-all ${
                       currentPage === pageNum 
                         ? "bg-ink text-white shadow-md" 
@@ -178,7 +190,7 @@ export default function GallerySection() {
 
             {/* Next Button */}
             <button 
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-transparent text-ink transition-colors hover:bg-card disabled:opacity-40 disabled:hover:bg-transparent"
             >
